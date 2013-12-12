@@ -9,12 +9,9 @@ block content
           .span10.offset1
             #faqAccordion.accordion
             h4 number of excercises: #{excercises.length}
-            each ex in excercises
-              .accordion-group
-                .accordion-heading
+            - for(var i=0;i<excercises.length;++i){
+              - var ex = excercises[i];
                   h4
-                    a(class="accordion-toggle" data-toggle="collapse" data-parent="#faqAccordion" href="#ex#{ex.id}")
+                    a(href="/excercises/#{i}")
                       | #{ex.question}
-                div(id="ex#{ex.id}", class="accordion-body collapse")
-                  .accordion-inner
-                    | #{ex.question}
+            - }

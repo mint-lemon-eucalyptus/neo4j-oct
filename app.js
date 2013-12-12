@@ -245,12 +245,23 @@ app.get('/', function (req, res) {
 
 app.get('/excercises', function (req, res) {
     if (!res.locals.session.auth) {
-        res.render('sign_in');
+        res.redirect('/sign_in');
     }
     else {
         res.render('excercises',{excercises:excercises});
     }
 });
+
+app.get('/excercises/:id', function (req, res) {
+    if (!res.locals.session.auth) {
+        res.redirect('/sign_in');
+    }
+    else {
+        res.render('excercise',{excercises:excercises[req.params.id]});
+    }
+});
+
+
 
 
 //login
